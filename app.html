@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<<!DOCTYPE html>
 <html>
 <head>
   <title>Simple To-Do List</title>
@@ -6,68 +6,14 @@
 <body>
   <h2>My To-Do List</h2>
 
-  
-  <input id="taskInput" type="text" placeholder="Enter a new task">
+   <input id="taskInput" type="text" placeholder="Enter a new task">
 
-  
   <button onclick="addTask()">Add Task</button>
-
 
   <ul id="taskList"></ul>
 
-  <script>
-   
-    let taskInput = document.getElementById("taskInput");
-    let taskList = document.getElementById("taskList");
-
-  
-    function addTask() {
-      let taskText = taskInput.value.trim(); // get text from input and remove extra spaces
-
-      if (taskText === "") {
-        alert("Please enter a task!");
-        return;
-      }
-
-     
-      let li = document.createElement("li");
-
-      
-      let checkbox = document.createElement("input");
-      checkbox.type = "checkbox";
-
-     
-      checkbox.onclick = function() {
-        if (checkbox.checked) {
-          li.style.textDecoration = "line-through";
-        } else {
-          li.style.textDecoration = "none";
-        }
-      };
-
-     
-      let taskLabel = document.createElement("span");
-      taskLabel.textContent = " " + taskText + " ";
-
-   
-      let deleteBtn = document.createElement("button");
-      deleteBtn.textContent = "Delete";
-      deleteBtn.onclick = function() {
-        taskList.removeChild(li);
-      };
-
-      
-      li.appendChild(checkbox);
-      li.appendChild(taskLabel);
-      li.appendChild(deleteBtn);
-
-      
-      taskList.appendChild(li);
-
-    
-      taskInput.value = "";
-    }
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
+
 
