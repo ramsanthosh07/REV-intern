@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Simple To-Do List</title>
+</head>
+<body>
+  <h2>My To-Do List</h2>
+
+  <!-- Input field -->
+  <input id="taskInput" type="text" placeholder="Enter a new task">
+
+  <!-- Add button -->
+  <button onclick="addTask()">Add Task</button>
+
+  <!-- Where tasks will appear -->
+  <ul id="taskList"></ul>
+
+  <script>
+    // Get references to HTML elements
+    let taskInput = document.getElementById("taskInput");
+    let taskList = document.getElementById("taskList");
+
+    // Function to add a task
+    function addTask() {
+      let taskText = taskInput.value.trim(); // get text from input and remove extra spaces
+
+      if (taskText === "") {
+        alert("Please enter a task!");
+        return;
+      }
+
+      // Create new list item
+      let li = document.createElement("li");
+
+      // Create a checkbox
+      let checkbox = document.createElement("input");
+      checkbox.type = "checkbox";
+
+      // When checkbox is clicked, mark task complete/incomplete
+      checkbox.onclick = function() {
+        if (checkbox.checked) {
+          li.style.textDecoration = "line-through";
+        } else {
+          li.style.textDecoration = "none";
+        }
+      };
+
+      // Create text node for task
+      let taskLabel = document.createElement("span");
+      taskLabel.textContent = " " + taskText + " ";
+
+      // Create delete button
+      let deleteBtn = document.createElement("button");
+      deleteBtn.textContent = "Delete";
+      deleteBtn.onclick = function() {
+        taskList.removeChild(li);
+      };
+
+      // Add all elements inside list item
+      li.appendChild(checkbox);
+      li.appendChild(taskLabel);
+      li.appendChild(deleteBtn);
+
+      // Add list item to list
+      taskList.appendChild(li);
+
+      // Clear input box
+      taskInput.value = "";
+    }
+  </script>
+</body>
+</html>
